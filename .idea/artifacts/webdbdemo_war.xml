@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="webdbdemo:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>webdbdemo</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="webdbdemo-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="webdbdemo:war exploded" />
+    </root>
+  </artifact>
+</component>
