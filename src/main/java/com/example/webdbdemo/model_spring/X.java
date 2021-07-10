@@ -2,6 +2,8 @@ package com.example.webdbdemo.model_spring;
 
 /*
 Piszkozat, rendesen így kell definiálni: https://en.wikibooks.org/wiki/Java_Persistence/ManyToOne
+Álatlánosabb leírás: https://en.wikibooks.org/wiki/Java_Persistence/Relationships#JPA_Relationship_Types
+ */
  */
 */
  */
