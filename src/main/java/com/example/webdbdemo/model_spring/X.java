@@ -1,5 +1,10 @@
 package com.example.webdbdemo.model_spring;
 
+/*
+Piszkozat, rendesen így kell definiálni: https://en.wikibooks.org/wiki/Java_Persistence/ManyToOne
+ */
+*/
+ */
 public class X {
 }
 
