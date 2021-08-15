@@ -89,8 +89,17 @@ Az alkalmazás még nem futóképes, csak a teszt osztályok próbálhatók ki.
 
 Felület
 =======
+Vaadin konfigurálása:
+0) A VAadin start felület legenerál egy komplett projektet: https://start.vaadin.com/app/?ads_cmpid=700075176&ads_adid=66379531830&ads_matchtype=b&ads_network=g&ads_creative=314259357538&utm_term=vaadin+download&ads_targetid=kwd-377068347267&utm_source=adwords&utm_medium=ppc&ttv=2&gclid=CjwKCAjw9uKIBhA8EiwAYPUS3GgJ9oVl2hOePgT_oQS-gHobZC5zs6WZI6hEtvmaxMz78S_o-pxZTBoC5MEQAvD_BwE
+Ebből a starter projektből másoltam át a legszükségesebb részeket.
+1) POM.XML-be be kell tenni a vaadin specifikus részeket.
+Utánna Load Maven Changes (ctrl+shift+O) kell, ha ez után is lesz hiba a pom.xml-ben, akkor: File/Invalidate Cache segít.
+2) package.json: változatlanul a starter kitből
+3) application.properties-ben a vaadin specifikus paramétereket be kell állítani
+4) Application.java: az alkalmazás belépési pontja
+5) UserView class: egy egyszerű grid, ami megjeleníti egy tábla tartalmát
+- FONTOS: Először fut a contructor, utánna az autowired, utána az init, tehát a contstructorban még nem lehet hesználani a repo-kat.
 
-JSP példák: https://www3.ntu.edu.sg/home/ehchua/programming/java/JSPByExample.html#zz-6.
+Futtatni az Application class melletti/vagy a felső sorban lévő zöld nyilacskával lehet
 
-
-
+További adatműveletekre példák: https://www.baeldung.com/spring-boot-vaadin

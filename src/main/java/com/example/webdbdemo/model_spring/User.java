@@ -1,6 +1,7 @@
 package com.example.webdbdemo.model_spring;
 
 import javax.persistence.*;
+import java.util.List;
 
 // Az annotációkról részletesen: https://docs.oracle.com/javaee/7/tutorial/persistence-intro001.htm
 // https://www.tutorialspoint.com/spring/spring_jdbc_framework.htm
@@ -13,16 +14,16 @@ public class User {
     @Column(length=60)
     private String name;
     private String email;
-    private String address;
+    @OneToMany(fetch=FetchType.EAGER)
+    private List<Address> address;
 
     public User(){ // no args constructor kell
     }
 
-    public User(Integer id, String name, String email, String address){
+    public User(Integer id, String name, String email){
         this.id=id;
         this.name=name;
         this.email=email;
-        this.address = address;
     }
 
     public Integer getId() {
@@ -52,5 +53,13 @@ public class User {
     @Override
     public String toString(){
       return Integer.toString(id) + ','+ name + ','+email;
+    }
+
+    public List<Address> getAddress() {
+        return address;
+    }
+
+    public void setAddress(List<Address> address) {
+        this.address = address;
     }
 }

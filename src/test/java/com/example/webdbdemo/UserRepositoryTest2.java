@@ -39,6 +39,7 @@ public class UserRepositoryTest2 {
         Iterable<User> ul=ur.findAll();
         for(User u: ul){
             System.out.println(u.toString());
+
         }
     }
 
@@ -62,7 +63,7 @@ public class UserRepositoryTest2 {
     @Test
     void save_insert() {
         for(int i=0;i<10;i++) {
-            User u = new User(null, "Maci Laci" + i, "hehe@hehe.he" + i, "cim"+i);
+            User u = new User(null, "Maci Laci" + i, "hehe@hehe.he" + i);
             ur.save(u);
         }
     }
