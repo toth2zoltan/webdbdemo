@@ -1,7 +1,10 @@
 package com.example.webdbdemo.view;
 
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.Html;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.PageTitle;
 import com.example.webdbdemo.view.MainLayout;
@@ -13,5 +16,5 @@ public class AboutView extends Div {
     public AboutView() {
         add(new Text("Ez egy egyszerű Vaadin - Spring Boot stacket bemutató alkalmazás"));
     }
-
 }
+

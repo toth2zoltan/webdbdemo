@@ -119,7 +119,7 @@ public class MainLayout extends AppLayout {
     private List<Tab> createMenuItems() {
         MenuItemInfo[] menuItems = new MenuItemInfo[]{ //
                 new MenuItemInfo("User List", "la la-globe", UserView.class), //
-
+                new MenuItemInfo("Clock", "la la-file", ClockView.class), //
                 new MenuItemInfo("About", "la la-file", AboutView.class), //
 
         };
