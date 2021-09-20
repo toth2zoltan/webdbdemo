@@ -14,6 +14,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import java.util.List;
 
 @PageTitle("Clock")
 @Route(value = "clock", layout = MainLayout.class)
+@Secured("ROLE_User")
 public class ClockView extends HorizontalLayout {
     private Button pause;
 

@@ -11,6 +11,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.PageTitle;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import java.util.List;
 
 @PageTitle("User List")
 @Route(value = "user", layout = MainLayout.class)
+@Secured("ROLE_Admin")
 public class UserView extends HorizontalLayout {
 
     private Grid<User> userGrid;

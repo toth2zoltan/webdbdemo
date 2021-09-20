@@ -24,6 +24,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.component.avatar.Avatar;
+import org.springframework.security.access.annotation.Secured;
 
 /**
  * The main view is a top-level placeholder for other views.
@@ -32,6 +33,7 @@ import com.vaadin.flow.component.avatar.Avatar;
 @Theme(themeFolder = "myapp")
 @PageTitle("Main")
 @Route("")
+@Secured("ROLE_User")
 public class MainLayout extends AppLayout {
 
     public static class MenuItemInfo {

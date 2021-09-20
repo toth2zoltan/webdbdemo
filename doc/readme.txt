@@ -103,3 +103,49 @@ Utánna Load Maven Changes (ctrl+shift+O) kell, ha ez után is lesz hiba a pom.x
 Futtatni az Application class melletti/vagy a felső sorban lévő zöld nyilacskával lehet
 
 További adatműveletekre példák: https://www.baeldung.com/spring-boot-vaadin
+
+
+Security
+================
+Az összefoglaló a https://vaadin.com/learn/tutorials/securing-your-app-with-spring-security leglényegesebb részeinek kivonata.
+A linken részletesebb magyarázatok it találhatók.
+
+Az alkalmazás minden view-ja a saját url-jén keresztül önállóan elérhető, ezért a webalkalmazások jogosultságkezelése bonyolultabb,
+mint a vastag klienses alkalmazásoké, mert minden request esetén kell jogosultságot ellenőrizni.
+
+A springnek van ehhez is támogatása:
+pom.xml:
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+        </dependency>
+
+
+A security.SecurityConfiguration class-ban írunk le minden lényeges információt a jogosultságkezeléshez, ronda kód, de szerencsére nem nagyon kell módosítani:
+1) a configure method-okkal definiáljuk, hogy mit lehet szabadon elérni, mihez kell bejelentkezés. Itt definiáljuk, hogy melyik a login képernyőnk.
+2) A UserDettailsService a user lista kezelőt adja vissza. A példában egy egyszerű memóriában lévő, kódolatlan jelszóval rendelkező userlista van.
+Rendees alkalmazásban ilyen nem csinálunk,
+a jelszót nem tároljuk sem adatbázisban, sem kódban olvasható formában, hanem encodoljuk. A login
+folyamat során a begépelt jelszó encodolt formáját hasonlítjuk az adatbázisban tárolt encodolt jelszóval.
+További informnációk:
+https://docs.spring.io/spring-security/site/docs/5.4.6/api/org/springframework/security/core/userdetails/User.html#withDefaultPasswordEncoder
+Adatbázisban tárolt userek kezelése: https://www.baeldung.com/spring-security-authentication-with-a-database
+3) isFrameworkInternalRequest: A framework belső hívásait azonosítja, csak azért kell, hoyg ezeket ne logoljuk.
+4) isUserLoggedIn: eldönti, hogy valaki be van-e jelentkezve.
+5) isAccessGranted: A view-knál megadott Secured annotációk alapján eldönti, hogy a bejelentkezett user jogosult-e megnézni a view-t vagy nem.
+Pl. Secured("ROLE_Admin") annotációval rendelkező view-t csak az admin felhasználók érhetik el. A
+ Secured annotáció nélküli view-kat bárki láthatja. Ezt csak a példa kedvéért hagytam bent, biztonságosabb gyakorlatt, hogyha
+annotáció nélküli view-kat senki sem lát. (Methogy a programozó ugyis elfelejti kitenni az anntációt).
+
+LoginView.class: A bejelentkezési képernyő. Van kész kéeprnyő is, amit néhány sorból lehet implementálni, azért ezt választottam, mert ezt
+kedvedre csinosíthatod.
+
+ConfigureUIServiceInitListener.class: Ez csipi el a kéréseket, és mielőtt továbbítani a kérést az adott view-nak, elvégzi a jogosultság ellenőrzést.
+Ezen sem kell módosítani.
+
+A példában a /about bárki számára elérhető, a /clock / user joggal, a /user admin joggal érhető csak el.
