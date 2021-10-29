@@ -74,7 +74,7 @@ További függőségek beállítása: pom.xml
         spring-boot-starter-data-jpa
         spring-boot-starter-test
     jobb klikk Maven/Reload Project
-A lib/javax.persistence.jar fájlt törölni kell.
+A lib/javax.persistence.jar és lib/javax.servlet.jsp.jar fájlt törölni kell.
 
 model_spring.User osztály: Hasonló az előző User osztályhoz, csak annotációkkal van kiegészítve,
     melyek az attributumok, osztályok, oszlopokhoz, táblákhoz rendeléaét definiálják.
@@ -103,6 +103,10 @@ Utánna Load Maven Changes (ctrl+shift+O) kell, ha ez után is lesz hiba a pom.x
 Futtatni az Application class melletti/vagy a felső sorban lévő zöld nyilacskával lehet
 
 További adatműveletekre példák: https://www.baeldung.com/spring-boot-vaadin
+
+Néha beragad az alkalmazásszerver, kilövése:
+netstat -ano | findstr 8080
+taskkill  /F  /PID  <Process Id>
 
 
 Security
